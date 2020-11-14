@@ -19,15 +19,17 @@ if (personalMovieDB.count < 10) {
 } else {alert('Произошла ошибка');}
 
 
-tryAgain:
-for (let i = 0; i < 3; i++) {
-        let propTemp = prompt ('Один из последних просмотренных фильмов?','');
-        if (propTemp === '' || propTemp === null || propTemp.length > 50) {
-            i = 0;
-            alert('Введите значение менше 50 символов');
-            continue tryAgain;
-        }
-        personalMovieDB.movies[propTemp] = prompt ('На сколько оцените его?','');
+for (let i = 0; i < 2; i++) {
+    const a = prompt('Один из последних просмотренных фильмов?', ''),
+          b = prompt('На сколько оцените его?', '');
+
+    if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+        personalMovieDB.movies[a] = b;
+        console.log('done');
+    } else {
+        console.log('error');
+        i--;
+    }
 }
 
 console.log(personalMovieDB);
