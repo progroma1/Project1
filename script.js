@@ -1,6 +1,13 @@
 /* Sample of object and usage of prompt*/ 
 
 
+hello();
+
+function hello () {
+    console.log('Hello world!');
+}
+
+
 //console.log(numberOfFilms);
 //console.log(`Я посмотрел ${numberOfFilms} фильмов`);
 const personalMovieDB = {
