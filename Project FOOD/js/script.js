@@ -22,6 +22,8 @@ window.addEventListener('DOMContentLoaded', () =>{
     hideTabContent();
     showTabContent();
 
+
+
     tabsParent.addEventListener('click', (event) => {
         const target = event.target;
         if (target && target.classList.contains('tabheader__item')) {
@@ -33,6 +35,8 @@ window.addEventListener('DOMContentLoaded', () =>{
             });
         }
     });
+
+
 
 
 // Timer
@@ -85,6 +89,46 @@ function setClock(selector, endtime) {
 }
 
 setClock('.timer', deadline);
+
+
+// Modal windows
+const modalTrigger = document.querySelectorAll('[data-modal]'),
+      modal = document.querySelector('.modal'),
+      modalCloseBtn = document.querySelector('[data-close]');
+
+modalTrigger.forEach( item => {
+    item.addEventListener('click', () => {
+        modal.classList.add('show');
+        modal.classList.remove('hide');
+       // modal.classList.toggle('show');
+        document.body.style.overflow = 'hidden';
+    });
+});
+
+
+
+function closeModal () {
+    document.body.style.overflow = 'hidden';
+    modal.classList.add('hide');
+    modal.classList.remove('show');
+}
+
+modalCloseBtn.addEventListener('click', closeModal);
+
+
+modal.addEventListener('click', (e) => {
+    if (e.target === modal) {
+        closeModal ();
+    }
+});
+
+document.addEventListener('keydown', (pressKey) => {
+    if (pressKey.code === "Escape" && modal.classList.contains('show')) {
+        closeModal();
+    }
+});
+
+
 
 
 });
